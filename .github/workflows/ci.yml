@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    shell: bash
+    shell: sh
 
 jobs:
   arm:
@@ -29,5 +29,5 @@ jobs:
         uses: docker://hasufell/arm64v8-ubuntu-haskell:focal
         name: Run build (arm64v8 linux)
         with:
-          args: sh -c "rm config.sub && cabal update && env && autoreconf -i && cabal test all --test-show-details=direct"
+          args: sh -c "rm config.sub && cabal update && env && autoreconf -i --verbose && cabal test all --test-show-details=direct"
 
