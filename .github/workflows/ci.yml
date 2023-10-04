@@ -29,5 +29,5 @@ jobs:
         uses: docker://hasufell/arm64v8-ubuntu-haskell:focal
         name: Run build (arm64v8 linux)
         with:
-          args: sh -c "rm -f config.sub config.guess configure && cabal update && env && ls -l && autoreconf --version && autoreconf -i --verbose && ls -l && grep ac_aux_files configure && cabal test all --test-show-details=direct"
+          args: sh -c "rm -f config.sub config.guess configure && cabal update && env && ls -l && autoreconf --version && autoreconf -i --verbose && ls -l && (grep ac_aux_files configure || true) && (grep config.sub configure || true) && cabal test all --test-show-details=direct"
 
